@@ -17,17 +17,11 @@ public class End {
         ending = new NewEnding(howEnded);
         EventsToEndCounter.addEvent(occasion.getName());
     }
-    public void changeOccasion(Occasion occ){
-        try{
+    public void changeOccasion(Occasion occ) throws NoOccasionException{
             if(occ == null){
                 throw new NoOccasionException("Попытка изменить событие на несуществующее");
             }
             occasion = occ;
-        }
-        catch (NoOccasionException e){
-            System.out.println("Нельзя изменить событие на несуществующее");
-            e.printStackTrace();
-        }
     }
     public static void printNumOfEventsAboutToEnd(){
         System.out.println(numberOfEventsAboutToEnd + " - число действий/событий, которые могут завершиться");
