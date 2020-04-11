@@ -11,25 +11,23 @@ public abstract class Troll implements ITroll {
     public String getName(){
         return name;
     }
-    @Override
-    public void setName(String name){
-        this.name = name;
-    }
-    public Troll(String name){
-        try {
+    public Troll (String name){
+            try{
+            setName(name);}
+            catch (TrollsNameException e){
+                e.printStackTrace();
+                this.name = "NameException";
+            }
+        }
+        public void setName(String name) throws TrollsNameException{
             String checkName = name.toLowerCase();
             char[] arr = checkName.toCharArray();
             for (char i : arr) {
                 if (!(Character.isLetter(i) || i == ' ')) {
                     throw new TrollsNameException("Некоррктное имя тролля");
                 }
+                this.name = name;
             }
-            this.name = name;
-        }
-        catch (TrollsNameException ex){
-            System.out.println(ex.getExc());
-            this.name = "NameException";
-        }
     }
     @Override
     public String toString(){
